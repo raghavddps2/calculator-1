@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+                integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+                crossorigin="anonymous">
+
+</head>
+
+<body>
+        <!-- NAVIGATION BAR -->
+        <nav class="navbar navbar-dark bg-dark">
+                <span class="navbar-brand mb-0 h1">GPA CALCULATOR</span>
+        </nav>
+
+
+        <!-- JUMBOTRON -->
+
+        <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+
+                        <!-- INPUT GROUP -->
+
+                        <!-- BUTTON -->
+                        <div class="input-group-append">
+                                <input id="inputNumber" type="number" class="form-control"
+                                        placeholder="Total Number of Courses" aria-label="Total Number of Courses"
+                                        aria-describedby="number" value="">
+                                <button id="btnEnter" type="button" class="btn btn-dark"
+                                        style="background-color: #35499F;">Enter</button>
+                        </div>
+                </div>
+        </div>
+
+
+        <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+
+
+                        <!-- INPUT GROUP-->
+                        <div class="input-group mb-3">
+                                <input id="inputCourses" type="text" class="form-control" placeholder="Course Code"
+                                        aria-label="Course Code" aria-describedby="courseCode" value="">
+                        </div>
+
+                        <div class="input-group mb-3">
+                                <input id="inputCredit" type="number" class="form-control" placeholder="NO. of credits"
+                                        aria-label="NO. of credits" aria-describedby="credits" value="">
+                        </div>
+
+                        <div class="input-group mb-3">
+                                <input id="inputGrades" type="text" class="form-control" placeholder="Grade"
+                                        aria-label="Grade" aria-describedby="grade" value="">
+                        </div>
+
+                        <!-- BUTTON -->
+                        <div class="text-right">
+                                <button id="btnAdd" type="button" class="btn btn-dark"
+                                        style="background-color: #35499F;" disabled=true>Add</button>
+                        </div>
+                </div>
+        </div>
+
+        <!-- Display grades-->
+        <!-- Create a table of courses, credits and grades-->
+        <nav class="navbar navbar-light" style="background-color: #275B74;">
+                <table class="table table-dark">
+                        <thead>
+                                <tr class="text-center">
+                                        <th scope="col">#</th>
+                                        <th scope="col">Course</th>
+                                        <th scope="col">Credits</th>
+                                        <th scope="col">Grade</th>
+                                </tr>
+                        </thead>
+                        <tbody>
+                                <tr class="text-center">
+                                        <th scope="row">1</th>
+                                        <td>CS4100</td>
+                                        <td>3</td>
+                                        <td>B</td>
+                                </tr>
+                                <tr class="text-center">
+                                        <th scope="row">2</th>
+                                        <td>CS4101</td>
+                                        <td>4</td>
+                                        <td>S</td>
+                                </tr>
+                                <tr class="text-center">
+                                        <th scope="row">3</th>
+                                        <td>CS4102</td>
+                                        <td>5</td>
+                                        <td>A</td>
+                                </tr>
+                        </tbody>
+                </table>
+        </nav>
+
+        <!-- LIST GROUP -->
+        <!-- To display the ciurses and grades-->
+        <div class="text-center" id="displayResult">
+                <li class="list-group-item list-group-item-success">Total credits: 27</li>
+                <li class="list-group-item list-group-item-success">Grade Points(GP): 255</li>
+                <li class="list-group-item list-group-item-success">GPA: 9.44</li>
+        </div>
+
+        <script>
+                //get reference to the buttons
+                /* enter button */
+                const numberEl = document.querySelector("#btnEnter")
+
+
+                /* add button */
+                const addEl = document.querySelector("#btnAdd")
+
+
+                /* reference to  number*/
+                const inputNumberEl = document.querySelector("#inputNumber")
+                /* reference to course */
+                const courseEl = document.querySelector("#inputCourses")
+
+                /* reference to credits */
+                const creditEl = document.getElementById("inputCredit")
+                /* reference to grades */
+                const gradeEl = document.querySelector("#inputGrades")
+
+                //set listeners for the buttons
+                /* total number of courses */
+                numberEl.addEventListener("click", getTotalCourses, false)
+
+                /* set listener for ad button */
+                addEl.addEventListener("click", getCourseDetails, false)
+
+
+
+                //storage 
+                const detailsArr = []
+                // Required functions
+                function getTotalCourses() {
+                                const n = parseInt(inputNumberEl.value, 10)
+                                console.log(n, typeof (n))
+                                document.getElementById("btnEnter").disabled = true
+                                document.getElementById("btnAdd").disabled = false
+
+                                getCourseDetails(courseEl, creditEl, gradeEl)
+                        }
+                function getCourseDetails(cs, cr, gd) {
+                                var textCourse = cs.value
+                                var numCredit = cr.value
+                                var textGrade = gd.value
+
+                                // if (cs) {
+                                //         textCourse = cs.value
+                                //         console.log(textCourse, typeof (textCourse))
+                                // }
+                                // if (cr) {
+                                //         numCredit = cr.value
+                                //         console.log(numCredit, typeof (numCredit))
+                                // }
+                                // if (gd) {
+                                //         textGrade = gd.value
+                                //         console.log(textGrade, typeof (textGrade))
+                                // }
+
+                                // const detailsObj = {}
+
+                                // detailsObj.course = textCourse
+                                // detailsObj.credit = numCredit
+                                // detailsObj.grade = textGrade
+                                // detailsArr.push(detailsObj)
+
+                                // console.log(detailsObj)
+                                // console.log(detailsArr)
+
+                        }
+        </script>
+
+</body>
+
+</html>
