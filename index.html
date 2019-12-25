@@ -133,7 +133,8 @@
                 numberEl.addEventListener("click", getTotalCourses, false)
 
                 /* set listener for ad button */
-                addEl.addEventListener("click", getCourseDetails, false)
+                //send with params here
+                addEl.addEventListener("click",function trigger(){getCourseDetails(courseEl,creditEl,gradeEl)}, false)
 
 
 
@@ -145,14 +146,15 @@
                                 console.log(n, typeof (n))
                                 document.getElementById("btnEnter").disabled = true
                                 document.getElementById("btnAdd").disabled = false
-
-                                getCourseDetails(courseEl, creditEl, gradeEl)
+                                //calling function here is an issue.
+//                                 getCourseDetails(courseEl, creditEl, gradeEl)
                         }
                 function getCourseDetails(cs, cr, gd) {
                                 var textCourse = cs.value
                                 var numCredit = cr.value
                                 var textGrade = gd.value
-
+                                
+                                console.log(textCourse,textGrade,numCredit)
                                 // if (cs) {
                                 //         textCourse = cs.value
                                 //         console.log(textCourse, typeof (textCourse))
